@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Assignments() {
     return (
         <div id="wd-assignments">
@@ -9,53 +11,53 @@ export default function Assignments() {
                 ASSIGNMENTS 40% of Total <button>+</button> </h3>
             <ul id="wd-assignment-list">
                 <li className="wd-assignment-list-item">
-                    <a href="/Kambaz/Courses/cid/Assignments/123"
+                    <Link href="/Kambaz/Courses/cid/Assignments/123"
                         className="wd-assignment-link" >
                         A1 - ENV + HTML
-                    </a> </li>
+                    </Link> </li>
                 <li className="wd-assignment-list-item">
-                    <a
+                    <Link
                         href="/Kambaz/Courses/cid/Assignments/A2"
                         className="wd-assignment-link"
                     >
                         A2 – CSS + BOOTSTRAP
-                    </a>
+                    </Link>
                 </li>
 
                 <li className="wd-assignment-list-item">
-                    <a
+                    <Link
                         href="/Kambaz/Courses/cid/Assignments/A3"
                         className="wd-assignment-link"
                     >
                         A3 – JAVASCRIPT + DOM
-                    </a>
+                    </Link>
                 </li>
 
                 <li className="wd-assignment-list-item">
-                    <a
+                    <Link
                         href="/Kambaz/Courses/cid/Assignments/A4"
                         className="wd-assignment-link"
                     >
                         A4 – REACT + STATE
-                    </a>
+                    </Link>
                 </li>
 
                 <li className="wd-assignment-list-item">
-                    <a
+                    <Link
                         href="/Kambaz/Courses/cid/Assignments/A5"
                         className="wd-assignment-link"
                     >
                         A5 – ROUTING + REDUX
-                    </a>
+                    </Link>
                 </li>
 
                 <li className="wd-assignment-list-item">
-                    <a
+                    <Link
                         href="/Kambaz/Courses/cid/Assignments/A6"
                         className="wd-assignment-link"
                     >
                         A6 – NODE + SESSION
-                    </a>
+                    </Link>
                 </li>
             </ul>
         </div>

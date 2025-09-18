@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Quiz() {
     return (
         <div id="wd-quizs">
@@ -8,53 +10,53 @@ export default function Quiz() {
                 QUIZ 40% of Total <button>+</button> </h3>
             <ul id="wd-quiz-list">
                 <li className="wd-quiz-list-item">
-                    <a href="/Kambaz/Courses/cid/Home"
+                    <Link href="/Kambaz/Courses/cid/Home"
                         className="wd-quiz-link" >
                         Q1
-                    </a> </li>
+                    </Link> </li>
                 <li className="wd-quiz-list-item">
-                    <a
+                    <Link
                         href="/Kambaz/Courses/cid/Home"
                         className="wd-quiz-link"
                     >
                         Q2
-                    </a>
+                    </Link>
                 </li>
 
                 <li className="wd-quiz-list-item">
-                    <a
+                    <Link
                         href="/Kambaz/Courses/cid/Home"
                         className="wd-quiz-link"
                     >
                         Q3
-                    </a>
+                    </Link>
                 </li>
 
                 <li className="wd-quiz-list-item">
-                    <a
+                    <Link
                         href="/Kambaz/Courses/cid/Home"
                         className="wd-quiz-link"
                     >
                         Q4
-                    </a>
+                    </Link>
                 </li>
 
                 <li className="wd-quiz-list-item">
-                    <a
+                    <Link
                         href="/Kambaz/Courses/cid/Home"
                         className="wd-quiz-link"
                     >
                         Q5
-                    </a>
+                    </Link>
                 </li>
 
                 <li className="wd-quiz-list-item">
-                    <a
+                    <Link
                         href="/Kambaz/Courses/cid/quizs/A6"
                         className="wd-quiz-link"
                     >
                         Q6
-                    </a>
+                    </Link>
                 </li>
             </ul>
         </div>
