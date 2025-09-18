@@ -8,6 +8,7 @@ export default function Labs() {
                 <p><span className="font-semibold">Name:</span> Aparnaa Rajan</p>
                 <p><span className="font-semibold">Email:</span> rajan.ap@northeastern.edu</p>
                 <p><span className="font-semibold">NUID:</span> 002596961</p>
+                <p><span className="font-semibold">Section:</span> CS5610.19730.202610 </p>
             </div>
             <br />
             <br />
