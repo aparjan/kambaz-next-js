@@ -9,13 +9,13 @@ export default function Assignments() {
                 ASSIGNMENTS 40% of Total <button>+</button> </h3>
             <ul id="wd-assignment-list">
                 <li className="wd-assignment-list-item">
-                    <a href="/Kambaz/Courses/1234/Assignments/123"
+                    <a href="/Kambaz/Courses/cid/Assignments/123"
                         className="wd-assignment-link" >
                         A1 - ENV + HTML
                     </a> </li>
                 <li className="wd-assignment-list-item">
                     <a
-                        href="/Kambaz/Courses/1234/Assignments/A2"
+                        href="/Kambaz/Courses/cid/Assignments/A2"
                         className="wd-assignment-link"
                     >
                         A2 – CSS + BOOTSTRAP
@@ -24,7 +24,7 @@ export default function Assignments() {
 
                 <li className="wd-assignment-list-item">
                     <a
-                        href="/Kambaz/Courses/1234/Assignments/A3"
+                        href="/Kambaz/Courses/cid/Assignments/A3"
                         className="wd-assignment-link"
                     >
                         A3 – JAVASCRIPT + DOM
@@ -33,7 +33,7 @@ export default function Assignments() {
 
                 <li className="wd-assignment-list-item">
                     <a
-                        href="/Kambaz/Courses/1234/Assignments/A4"
+                        href="/Kambaz/Courses/cid/Assignments/A4"
                         className="wd-assignment-link"
                     >
                         A4 – REACT + STATE
@@ -42,7 +42,7 @@ export default function Assignments() {
 
                 <li className="wd-assignment-list-item">
                     <a
-                        href="/Kambaz/Courses/1234/Assignments/A5"
+                        href="/Kambaz/Courses/cid/Assignments/A5"
                         className="wd-assignment-link"
                     >
                         A5 – ROUTING + REDUX
@@ -51,7 +51,7 @@ export default function Assignments() {
 
                 <li className="wd-assignment-list-item">
                     <a
-                        href="/Kambaz/Courses/1234/Assignments/A6"
+                        href="/Kambaz/Courses/cid/Assignments/A6"
                         className="wd-assignment-link"
                     >
                         A6 – NODE + SESSION

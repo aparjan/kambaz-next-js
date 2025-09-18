@@ -8,13 +8,13 @@ export default function Quiz() {
                 QUIZ 40% of Total <button>+</button> </h3>
             <ul id="wd-quiz-list">
                 <li className="wd-quiz-list-item">
-                    <a href="/Kambaz/Courses/{cid}/Home"
+                    <a href="/Kambaz/Courses/cid/Home"
                         className="wd-quiz-link" >
                         Q1
                     </a> </li>
                 <li className="wd-quiz-list-item">
                     <a
-                        href="/Kambaz/Courses/{cid}/Home"
+                        href="/Kambaz/Courses/cid/Home"
                         className="wd-quiz-link"
                     >
                         Q2
@@ -23,7 +23,7 @@ export default function Quiz() {
 
                 <li className="wd-quiz-list-item">
                     <a
-                        href="/Kambaz/Courses/{cid}/Home"
+                        href="/Kambaz/Courses/cid/Home"
                         className="wd-quiz-link"
                     >
                         Q3
@@ -32,7 +32,7 @@ export default function Quiz() {
 
                 <li className="wd-quiz-list-item">
                     <a
-                        href="/Kambaz/Courses/{cid}/Home"
+                        href="/Kambaz/Courses/cid/Home"
                         className="wd-quiz-link"
                     >
                         Q4
@@ -41,7 +41,7 @@ export default function Quiz() {
 
                 <li className="wd-quiz-list-item">
                     <a
-                        href="/Kambaz/Courses/{cid}/Home"
+                        href="/Kambaz/Courses/cid/Home"
                         className="wd-quiz-link"
                     >
                         Q5
@@ -50,7 +50,7 @@ export default function Quiz() {
 
                 <li className="wd-quiz-list-item">
                     <a
-                        href="/Kambaz/Courses/1234/quizs/A6"
+                        href="/Kambaz/Courses/cid/quizs/A6"
                         className="wd-quiz-link"
                     >
                         Q6
