@@ -19,25 +19,22 @@ export default function AccountNavigation() {
       <div className="list-group wd-account-navigation">
         <Link
           href="/Kambaz/Account/Signin"
-          className={`list-group-item list-group-item-action border-0 ${
-            pathname.includes("/Signin") ? "active text-dark bg-white" : "text-danger bg-white"
-          }`}
+          className={`list-group-item list-group-item-action border-0 ${pathname.includes("/Signin") ? "active text-dark bg-white" : "text-danger bg-white"
+            }`}
         >
           Signin
         </Link>
         <Link
           href="/Kambaz/Account/Signup"
-          className={`list-group-item list-group-item-action border-0 ${
-            pathname.includes("/Signup") ? "active text-dark bg-white" : "text-danger bg-white"
-          }`}
+          className={`list-group-item list-group-item-action border-0 ${pathname.includes("/Signup") ? "active text-dark bg-white" : "text-danger bg-white"
+            }`}
         >
           Signup
         </Link>
         <Link
           href="/Kambaz/Account/Profile"
-          className={`list-group-item list-group-item-action border-0 ${
-            pathname.includes("/Profile") ? "active text-dark bg-white" : "text-danger bg-white"
-          }`}
+          className={`list-group-item list-group-item-action border-0 ${pathname.includes("/Profile") ? "active text-dark bg-white" : "text-danger bg-white"
+            }`}
         >
           Profile
         </Link>
@@ -51,17 +48,15 @@ export default function AccountNavigation() {
         <>
           <Link
             href="/Kambaz/Account/Signin"
-            className={`list-group-item list-group-item-action border-0 ${
-              pathname.includes("/Signin") ? "active text-dark bg-white" : "text-danger bg-white"
-            }`}
+            className={`list-group-item list-group-item-action border-0 ${pathname.includes("/Signin") ? "active text-dark bg-white" : "text-danger bg-white"
+              }`}
           >
             Signin
           </Link>
           <Link
             href="/Kambaz/Account/Signup"
-            className={`list-group-item list-group-item-action border-0 ${
-              pathname.includes("/Signup") ? "active text-dark bg-white" : "text-danger bg-white"
-            }`}
+            className={`list-group-item list-group-item-action border-0 ${pathname.includes("/Signup") ? "active text-dark bg-white" : "text-danger bg-white"
+              }`}
           >
             Signup
           </Link>
@@ -70,11 +65,19 @@ export default function AccountNavigation() {
       {currentUser && (
         <Link
           href="/Kambaz/Account/Profile"
-          className={`list-group-item list-group-item-action border-0 ${
-            pathname.includes("/Profile") ? "active text-dark bg-white" : "text-danger bg-white"
-          }`}
+          className={`list-group-item list-group-item-action border-0 ${pathname.includes("/Profile") ? "active text-dark bg-white" : "text-danger bg-white"
+            }`}
         >
           Profile
+        </Link>
+      )}
+      {currentUser && currentUser.role === "ADMIN" && (
+        <Link
+          href="/Kambaz/Account/User"  // ← Change to singular
+          className={`list-group-item list-group-item-action border-0 ${pathname.includes("/User") ? "active text-dark bg-white" : "text-danger bg-white"
+            }`}
+        >
+          Users
         </Link>
       )}
     </div>
