@@ -65,23 +65,23 @@ export default function Modules() {
   };
 
   const removeModule = async (moduleId: string) => {
-    try {
-      await modulesClient.deleteModule(moduleId);
-      dispatch(deleteModule(moduleId));
-    } catch (error) {
-      console.error("Error deleting module:", error);
-    }
-  };
+  try {
+    await modulesClient.deleteModule(cid as string, moduleId);
+    dispatch(deleteModule(moduleId));
+  } catch (error) {
+    console.error("Error deleting module:", error);
+  }
+};
 
-  const saveModule = async (module: Module) => {
-    const { editing, lessons, ...moduleToSave } = module;
-    try {
-      await modulesClient.updateModule(moduleToSave);
-      dispatch(updateModule({ ...module, editing: false }));
-    } catch (error) {
-      console.error("Error updating module:", error);
-    }
-  };
+const saveModule = async (module: Module) => {
+  const { editing, lessons, ...moduleToSave } = module;
+  try {
+    await coursesClient.updateModule(cid as string, moduleToSave);
+    dispatch(updateModule({ ...module, editing: false }));
+  } catch (error) {
+    console.error("Error updating module:", error);
+  }
+};
 
   return (
     <div className="wd-modules">

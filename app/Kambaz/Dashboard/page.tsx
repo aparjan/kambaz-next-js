@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCourses, deleteCourse as deleteFromStore, updateCourse as updateInStore } from "../Courses/reducer";
-import { enrollCourse, unenrollCourse } from "./reducer";
+import { enrollCourse, unenrollCourse, setEnrollments } from "./reducer";
 import * as userClient from "../Account/client";
 import * as courseClient from "../Courses/client";
 import * as enrollmentClient from "./client";
@@ -30,6 +30,69 @@ export default function Dashboard() {
     image: "/images/reactjs.jpg",
     description: "New Description"
   });
+
+  // Fetch courses and enrollments when component loads
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        console.log("🌐 Dashboard: Fetching courses and enrollments...");
+        console.log("👤 Current user:", currentUser);
+        
+        if (currentUser) {
+          if (currentUser.role === "FACULTY") {
+            // Faculty sees ALL courses by default
+            const allCourses = await courseClient.findAllCourses();
+            console.log("✅ Dashboard: All courses fetched for faculty:", allCourses);
+            dispatch(setCourses(allCourses));
+          } else {
+            // Students see their enrolled courses
+            const fetchedCourses = await userClient.findMyCourses();
+            console.log("✅ Dashboard: My courses fetched:", fetchedCourses);
+            dispatch(setCourses(fetchedCourses));
+            
+            // Fetch enrollments for students
+            const fetchedEnrollments = await userClient.findMyEnrollments();
+            console.log("✅ Dashboard: Enrollments fetched:", fetchedEnrollments);
+            dispatch(setEnrollments(fetchedEnrollments));
+          }
+        }
+      } catch (error) {
+        console.error("❌ Dashboard: Error fetching data:", error);
+      }
+    };
+
+    if (currentUser) {
+      fetchData();
+    }
+  }, [currentUser, dispatch]);
+
+  // Fetch all courses when "All Courses" is clicked
+  useEffect(() => {
+    const fetchAllCourses = async () => {
+      if (showAllCourses && !isFaculty) {
+        try {
+          console.log("🌐 Dashboard: Fetching ALL courses...");
+          const allCourses = await courseClient.findAllCourses();
+          console.log("✅ Dashboard: All courses fetched:", allCourses);
+          dispatch(setCourses(allCourses));
+        } catch (error) {
+          console.error("❌ Dashboard: Error fetching all courses:", error);
+        }
+      } else if (!showAllCourses && currentUser && !isFaculty) {
+        // Fetch back the user's enrolled courses
+        try {
+          const fetchedCourses = await userClient.findMyCourses();
+          dispatch(setCourses(fetchedCourses));
+        } catch (error) {
+          console.error("❌ Dashboard: Error fetching my courses:", error);
+        }
+      }
+    };
+
+    if (currentUser) {
+      fetchAllCourses();
+    }
+  }, [showAllCourses, currentUser, dispatch]);
 
   const addCourse = async () => {
     try {
@@ -79,6 +142,10 @@ export default function Dashboard() {
     try {
       const enrollment = await enrollmentClient.enrollInCourse(courseId);
       dispatch(enrollCourse(enrollment));
+      
+      // Refresh enrollments
+      const fetchedEnrollments = await userClient.findMyEnrollments();
+      dispatch(setEnrollments(fetchedEnrollments));
     } catch (error) {
       console.error("Error enrolling:", error);
     }
@@ -89,6 +156,16 @@ export default function Dashboard() {
     try {
       await enrollmentClient.unenrollFromCourse(courseId);
       dispatch(unenrollCourse({ user: currentUser._id, course: courseId }));
+      
+      // Refresh enrollments
+      const fetchedEnrollments = await userClient.findMyEnrollments();
+      dispatch(setEnrollments(fetchedEnrollments));
+      
+      // If not showing all courses, refresh the list to remove unenrolled course
+      if (!showAllCourses) {
+        const fetchedCourses = await userClient.findMyCourses();
+        dispatch(setCourses(fetchedCourses));
+      }
     } catch (error) {
       console.error("Error unenrolling:", error);
     }
@@ -96,13 +173,11 @@ export default function Dashboard() {
 
   const isFaculty = currentUser?.role === "FACULTY";
 
-  const filteredCourses = showAllCourses
-    ? courses
-    : currentUser
-    ? isFaculty
-      ? courses
-      : courses.filter((course: any) => isEnrolled(course._id))
-    : [];
+  const filteredCourses = isFaculty 
+    ? courses  // Faculty always see all courses
+    : showAllCourses
+      ? courses  // Students showing all courses
+      : courses.filter((course: any) => isEnrolled(course._id));  // Students showing only enrolled
 
   if (!isClient) {
     return null;
@@ -148,7 +223,7 @@ export default function Dashboard() {
 
       <h2 id="wd-dashboard-published">
         Published Courses ({filteredCourses.length})
-        {currentUser && (
+        {currentUser && !isFaculty && (
           <button 
             className="btn btn-primary float-end"
             onClick={() => setShowAllCourses(!showAllCourses)}
@@ -174,7 +249,7 @@ export default function Dashboard() {
                   }}
                 >
                   <img 
-                    src={course.image} 
+                    src={course.image || "/images/reactjs.jpg"} 
                     width="100%" 
                     height={160}
                     alt={course.name}
